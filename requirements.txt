@@ -44,7 +44,7 @@ pytest-cov==4.1.0
 faker==19.10.0 
 
 # Security Dependencies
-cryptography==41.0.4
+cryptography==44.0.0
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-dotenv==1.0.0
