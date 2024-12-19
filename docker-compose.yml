@@ -1,0 +1,89 @@
+services:
+  backend:
+    build: .
+    container_name: retrotrade-backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@db:5432/retrotrade
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET}
+      - API_KEY=${API_KEY}
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      - db
+      - redis
+    networks:
+      - retrotrade-network
+
+  frontend:
+    build: 
+      context: ./web_interface/frontend
+      dockerfile: Dockerfile
+    container_name: retrotrade-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - retrotrade-network
+
+  db:
+    image: postgres:13-alpine
+    container_name: retrotrade-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=retrotrade
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - retrotrade-network
+
+  redis:
+    image: redis:6-alpine
+    container_name: retrotrade-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - retrotrade-network
+
+  prometheus:
+    image: prom/prometheus
+    container_name: retrotrade-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - retrotrade-network
+
+  grafana:
+    image: grafana/grafana
+    container_name: retrotrade-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - retrotrade-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  retrotrade-network:
+    driver: bridge 

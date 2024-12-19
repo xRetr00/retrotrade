@@ -1,0 +1,132 @@
+# RetroTrade Bot Example Configuration
+# Copy this file to config.yaml and modify according to your needs
+
+# Exchange Settings
+exchange:
+  name: "binance"  # Supported: binance, kucoin, etc.
+  testnet: true    # Set to false for real trading
+  api_key: ""      # Your exchange API key
+  api_secret: ""   # Your exchange API secret
+  markets:
+    - spot         # Enable spot trading
+    # - futures    # Uncomment to enable futures trading
+    # - margin     # Uncomment to enable margin trading
+
+# Trading Parameters
+trading:
+  base_currencies:
+    - "USDT"      # Main quote currency
+  trading_pairs:   # Trading pairs to monitor
+    spot:
+      - "BTC/USDT"
+      - "ETH/USDT"
+    futures: []    # Add futures pairs if needed
+    margin: []     # Add margin pairs if needed
+  timeframes:      # Timeframes to analyze
+    - "1h"        # Primary timeframe
+    - "4h"        # Secondary timeframe
+    - "1d"        # Long-term trend
+
+# Risk Management
+risk_management:
+  max_position_size: 0.05     # 5% of portfolio per position
+  stop_loss_percentage: 0.02  # 2% stop loss
+  take_profit_percentage: 0.04 # 4% take profit
+  max_open_trades: 3
+  max_daily_trades: 10
+  max_drawdown: 0.10         # 10% maximum drawdown
+
+# Security Settings
+security:
+  api_key_encryption:
+    enabled: true
+    encryption_method: "AES-256"
+    key_rotation_interval: 7  # days
+  
+  ip_whitelist:
+    enabled: true
+    allowed_ips: []  # Add your IPs here
+  
+  two_factor_auth:
+    enabled: false   # Enable for production
+    method: "TOTP"
+    backup_codes: 5
+
+# API Settings
+api:
+  host: "localhost"
+  port: 8000
+  debug: true      # Set to false in production
+  rate_limiting:
+    enabled: true
+    calls_per_minute: 100
+
+# Database Settings
+database:
+  type: "postgresql"
+  host: "localhost"
+  port: 5432
+  name: "trading_data"
+  user: "postgres"
+  password: ""     # Set your database password
+  pool_size: 5     # Increase in production
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file_logging:
+    enabled: true
+    path: "logs"
+  console_logging:
+    enabled: true
+    color: true
+
+# Telegram Notifications
+telegram:
+  enabled: false   # Set to true to enable
+  bot_token: ""    # Your Telegram bot token
+  chat_id: ""      # Your chat ID
+  notification_settings:
+    trade_signals: true
+    position_updates: true
+    daily_reports: true
+    error_alerts: true
+
+# Performance Monitoring
+performance:
+  metrics:
+    - sharpe_ratio
+    - sortino_ratio
+    - max_drawdown
+  monitoring_interval: 3600  # seconds
+  alert_thresholds:
+    drawdown_alert: 0.10    # 10% drawdown alert
+
+# Market Analysis
+market_analysis:
+  regime_detection:
+    enabled: true
+    methods:
+      - "volatility_regime"
+      - "trend_regime"
+    lookback_period: 90
+  
+  multi_timeframe:
+    enabled: true
+    primary_timeframe: "1h"
+    secondary_timeframes: ["4h", "1d"]
+
+# Backup Settings
+backup:
+  enabled: true
+  interval: 86400  # 24 hours
+  storage:
+    type: "local"
+    path: "backups"
+    compression: true
+
+# Development Settings
+development:
+  debug_mode: false
+  test_mode: true
+  mock_trading: true  # Use mock trading in development 
