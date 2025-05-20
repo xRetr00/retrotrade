@@ -28,6 +28,7 @@ GRU_Model/          # GRU agent implementation and models
 
 ![RetroTrade Overview](assets/overview.png)
 
+![PPO Model Class Simple Snapshot](assets/PPO.png)
 
 ## Installation
 See [docs/Installation.md](docs/Installation.md) for detailed setup instructions.
