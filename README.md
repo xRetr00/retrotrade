@@ -11,7 +11,7 @@ RetroTrade is a modular, extensible algorithmic trading framework designed for r
 - Risk management modules
 - Real-time monitoring and Telegram notifications
 - Data processing and symbol discovery
-- Pre-trained models included
+- Pre-trained models included (PPO, GRU, Sentiment, Risk Management)
 
 ## Project Structure
 ```
@@ -22,7 +22,7 @@ risk_management/    # Risk management models and scripts
 sentiment_analysis/ # Sentiment analysis models and scripts
 data/               # Raw and processed market data
 PPO_Trader/         # PPO agent implementation and configs
-GRU/                # GRU agent implementation
+GRU_Model/          # GRU agent implementation and models
 ```
 
 ## Installation
