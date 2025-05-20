@@ -1,5 +1,7 @@
 # RetroTrade
 
+![This Project For Sale Please Read](For_Sale.md)
+
 RetroTrade is a modular, extensible algorithmic trading framework designed for research and experimentation with reinforcement learning (RL), deep learning, and sentiment analysis models. The project supports multiple cryptocurrencies, risk management strategies, and real-time monitoring, making it suitable for both academic and practical trading system development.
 
 **Note:** This project is not fully complete. Some models are provided as pre-trained and may require further development or fine-tuning.
