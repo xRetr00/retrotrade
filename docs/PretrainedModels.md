@@ -10,6 +10,12 @@ RetroTrade includes several pre-trained models for demonstration and further dev
 - Input: Market state features
 - Output: Trading actions (buy/sell/hold)
 
+### GRU (Gated Recurrent Unit)
+- Location: `GRU_Model/models/` or `Agents/gru_model.py`
+- Usage: Used for time-series forecasting and trading signal generation. See `GRU_Model/` for training and evaluation scripts.
+- Input: Sequential market data (price, volume, indicators)
+- Output: Predicted price movement or trading signals
+
 ### Risk Management Models
 - Location: `risk_management/saved_models/`
 - Usage: Used for portfolio risk assessment, position sizing, and stop-loss logic.
