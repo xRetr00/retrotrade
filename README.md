@@ -24,6 +24,10 @@ data/               # Raw and processed market data
 PPO_Trader/         # PPO agent implementation and configs
 GRU_Model/          # GRU agent implementation and models
 ```
+## 🔍 Project Overview
+
+![RetroTrade Overview](assets/overview.png)
+
 
 ## Installation
 See [docs/Installation.md](docs/Installation.md) for detailed setup instructions.
@@ -42,7 +46,7 @@ Full documentation is available in the [docs/](docs/) folder.
 - See `requirements.txt` and module-specific requirements files for dependencies.
 
 ## License
-This project is provided under the [MIT License](LICENSE).
+This project is provided under the [Proprietary License](LICENSE).
 
 ## Contact
 - Name: Shereef Ibrahim (xRetro)
